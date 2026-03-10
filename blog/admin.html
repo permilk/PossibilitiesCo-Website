@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — Blog PossibilitiesCo</title>
+    <link rel="icon" href="../assets/images/Logo_Possibilities.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <style>
+        .admin-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 100px 24px 60px
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px
+        }
+
+        .admin-header h1 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gray-900)
+        }
+
+        .admin-header h1 i {
+            color: var(--blue-700);
+            margin-right: 8px
+        }
+
+        .admin-login {
+            max-width: 400px;
+            margin: 140px auto;
+            text-align: center
+        }
+
+        .admin-login h2 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            color: var(--gray-900)
+        }
+
+        .admin-login p {
+            color: var(--gray-500);
+            font-size: .92rem;
+            margin-bottom: 24px
+        }
+
+        .admin-login .form-group {
+            text-align: left
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 4px;
+            border-bottom: 2px solid var(--gray-200);
+            margin-bottom: 28px
+        }
+
+        .admin-tab {
+            padding: 12px 20px;
+            font-size: .9rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: var(--font-body);
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: var(--transition)
+        }
+
+        .admin-tab:hover {
+            color: var(--gray-700)
+        }
+
+        .admin-tab.active {
+            color: var(--blue-700);
+            border-bottom-color: var(--blue-700)
+        }
+
+        .editor-section {
+            display: none
+        }
+
+        .editor-section.active {
+            display: block
+        }
+
+        .editor-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        .editor-row .form-group {
+            margin-bottom: 16px
+        }
+
+        .editor-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            padding: 10px 12px;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-300);
+            border-bottom: none;
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0
+        }
+
+        .toolbar-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--gray-200);
+            background: var(--white);
+            border-radius: 6px;
+            cursor: pointer;
+            color: var(--gray-600);
+            font-size: .85rem;
+            transition: var(--transition)
+        }
+
+        .toolbar-btn:hover {
+            background: var(--blue-50);
+            color: var(--blue-700);
+            border-color: var(--blue-200)
+        }
+
+        .toolbar-sep {
+            width: 1px;
+            background: var(--gray-300);
+            margin: 4px 6px
+        }
+
+        .editor-textarea {
+            width: 100%;
+            min-height: 400px;
+            padding: 16px;
+            border: 1px solid var(--gray-300);
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: .92rem;
+            line-height: 1.7;
+            resize: vertical;
+            outline: none;
+            transition: var(--transition)
+        }
+
+        .editor-textarea:focus {
+            border-color: var(--blue-400);
+            box-shadow: 0 0 0 3px rgba(0, 71, 171, .1)
+        }
+
+        .preview-panel {
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            min-height: 300px;
+            background: var(--white)
+        }
+
+        .preview-toggle {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px
+        }
+
+        .preview-toggle button {
+            padding: 8px 16px;
+            font-size: .82rem;
+            font-weight: 600;
+            border: 1px solid var(--gray-200);
+            background: var(--white);
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: var(--transition)
+        }
+
+        .preview-toggle button.active {
+            background: var(--blue-700);
+            color: var(--white);
+            border-color: var(--blue-700)
+        }
+
+        .article-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            margin-bottom: 10px;
+            transition: var(--transition)
+        }
+
+        .article-list-item:hover {
+            box-shadow: var(--shadow-sm)
+        }
+
+        .article-list-info h4 {
+            font-size: .95rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 4px
+        }
+
+        .article-list-info span {
+            font-size: .8rem;
+            color: var(--gray-500)
+        }
+
+        .article-list-actions {
+            display: flex;
+            gap: 8px
+        }
+
+        .article-list-actions button {
+            padding: 6px 14px;
+            font-size: .8rem;
+            font-weight: 600;
+            border-radius: 6px;
+            border: 1px solid var(--gray-200);
+            background: var(--white);
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: var(--transition)
+        }
+
+        .article-list-actions .btn-delete {
+            color: #dc3545;
+            border-color: #fecdd3
+        }
+
+        .article-list-actions .btn-delete:hover {
+            background: #fef2f2
+        }
+
+        .article-list-actions .btn-edit {
+            color: var(--blue-700);
+            border-color: var(--blue-200)
+        }
+
+        .article-list-actions .btn-edit:hover {
+            background: var(--blue-50)
+        }
+
+        .status-msg {
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            font-size: .88rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            display: none
+        }
+
+        .status-msg.success {
+            display: block;
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0
+        }
+
+        .status-msg.error {
+            display: block;
+            background: #fef2f2;
+            color: #991b1b;
+            border: 1px solid #fecaca
+        }
+
+        .status-msg.info {
+            display: block;
+            background: var(--blue-50);
+            color: var(--blue-800);
+            border: 1px solid var(--blue-200)
+        }
+
+        .publish-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 24px;
+            padding: 20px 24px;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md)
+        }
+
+        .publish-bar .btn-blue {
+            padding: 12px 28px
+        }
+
+        .publish-bar .btn-draft {
+            padding: 12px 24px;
+            background: var(--white);
+            color: var(--gray-700);
+            font-weight: 600;
+            font-size: .9rem;
+            border-radius: 50px;
+            border: 1px solid var(--gray-300);
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: var(--transition)
+        }
+
+        .publish-bar .btn-draft:hover {
+            border-color: var(--gray-400)
+        }
+
+        /* Cover image upload */
+        .cover-upload-area {
+            border: 2px dashed var(--gray-300);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--gray-50);
+            position: relative;
+        }
+
+        .cover-upload-area:hover,
+        .cover-upload-area.dragover {
+            border-color: var(--blue-400);
+            background: var(--blue-50);
+        }
+
+        .cover-upload-area i {
+            font-size: 1.8rem;
+            color: var(--gray-400);
+            margin-bottom: 8px;
+        }
+
+        .cover-upload-area p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            margin: 0;
+        }
+
+        .cover-upload-area small {
+            font-size: 0.78rem;
+            color: var(--gray-400);
+        }
+
+        .cover-preview {
+            position: relative;
+            margin-top: 12px;
+            display: none;
+        }
+
+        .cover-preview img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--gray-200);
+        }
+
+        .cover-preview .remove-cover {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 28px;
+            height: 28px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        .cover-input-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .cover-input-row input {
+            flex: 1;
+        }
+
+        .cover-input-row .btn-upload-small {
+            padding: 8px 14px;
+            background: var(--blue-50);
+            color: var(--blue-700);
+            border: 1px solid var(--blue-200);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            font-family: var(--font-body);
+            transition: var(--transition);
+        }
+
+        .cover-input-row .btn-upload-small:hover {
+            background: var(--blue-100);
+        }
+
+        /* Image upload modal */
+        .img-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-modal-overlay.active {
+            display: flex;
+        }
+
+        .img-modal {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .img-modal h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            color: var(--gray-900);
+        }
+
+        .img-modal .form-group {
+            margin-bottom: 14px;
+        }
+
+        .img-modal-actions {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+            margin-top: 16px;
+        }
+
+        .img-modal-actions button {
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: var(--transition);
+        }
+
+        .img-modal-actions .btn-cancel {
+            background: var(--white);
+            color: var(--gray-600);
+            border: 1px solid var(--gray-300);
+        }
+
+        @media(max-width:768px) {
+            .editor-row {
+                grid-template-columns: 1fr
+            }
+
+            .publish-bar {
+                flex-direction: column;
+                gap: 12px
+            }
+
+            .admin-header {
+                flex-direction: column;
+                gap: 12px;
+                align-items: flex-start
+            }
+
+            .article-list-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar" id="navbar" style="background:var(--blue-900);">
+        <div class="container">
+            <a href="../" class="navbar-logo"><img src="../assets/images/Logo_Possibilities.png"
+                    alt="PossibilitiesCo"></a>
+            <div class="navbar-links" id="navLinks">
+                <a href="../">Inicio</a>
+                <a href="./">Blog</a>
+                <a href="#" id="logoutBtn" style="display:none;color:rgba(255,255,255,.7);font-size:.85rem;"><i
+                        class="fas fa-sign-out-alt"></i> Salir</a>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- LOGIN -->
+    <div class="admin-login" id="loginScreen">
+        <div style="font-size:3rem;color:var(--blue-700);margin-bottom:16px;"><i class="fas fa-lock"></i></div>
+        <h2>Panel de administración</h2>
+        <p>Ingresa la contraseña de administrador para gestionar el blog.</p>
+        <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" id="passwordInput" placeholder="Contraseña de administrador">
+        </div>
+        <button class="btn-blue" style="width:100%;justify-content:center;margin-top:12px;" onclick="login()">
+            <i class="fas fa-sign-in-alt"></i> Ingresar
+        </button>
+        <div id="loginError" style="color:#991b1b;font-size:.85rem;margin-top:12px;display:none;">Contraseña incorrecta.
+        </div>
+    </div>
+
+    <!-- ADMIN -->
+    <div class="admin-container" id="adminPanel" style="display:none;">
+        <div class="admin-header">
+            <h1><i class="fas fa-pen-nib"></i> Blog Admin</h1>
+        </div>
+        <div id="statusMsg" class="status-msg"></div>
+
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="new" onclick="switchTab('new')"><i class="fas fa-plus"
+                    style="margin-right:6px;"></i> Nuevo artículo</button>
+            <button class="admin-tab" data-tab="articles" onclick="switchTab('articles')"><i class="fas fa-list"
+                    style="margin-right:6px;"></i> Artículos publicados</button>
+        </div>
+
+        <!-- NEW ARTICLE -->
+        <div class="editor-section active" id="tab-new">
+            <div class="editor-row">
+                <div class="form-group"><label>Título del artículo *</label><input type="text" id="postTitle"
+                        placeholder="Ej. Descubre tus fortalezas naturales"></div>
+                <div class="form-group"><label>Categoría *</label><input type="text" id="postCategory"
+                        placeholder="Ej. Coaching, Liderazgo, Equipos" list="categoryList"><datalist id="categoryList">
+                        <option value="Coaching">
+                        <option value="Liderazgo">
+                        <option value="Equipos">
+                        <option value="Desarrollo Personal">
+                        <option value="Organizaciones">
+                    </datalist></div>
+            </div>
+            <div class="editor-row">
+                <div class="form-group"><label>Autor</label><input type="text" id="postAuthor" value="Porfirio Gómez">
+                </div>
+                <div class="form-group">
+                    <label>Imagen de portada</label>
+                    <div class="cover-input-row">
+                        <input type="text" id="postCover" placeholder="Pega una URL o sube una imagen...">
+                        <button type="button" class="btn-upload-small"
+                            onclick="document.getElementById('coverFileInput').click()">
+                            <i class="fas fa-upload"></i> Subir
+                        </button>
+                        <input type="file" id="coverFileInput" accept="image/*" style="display:none"
+                            onchange="handleCoverUpload(this)">
+                    </div>
+                    <div class="cover-preview" id="coverPreview">
+                        <img id="coverPreviewImg" src="" alt="Portada">
+                        <button class="remove-cover" onclick="removeCover()" title="Quitar imagen"><i
+                                class="fas fa-times"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group"><label>Extracto (resumen breve)</label><input type="text" id="postExcerpt"
+                    placeholder="Breve descripción del artículo para la vista previa..."></div>
+
+            <label
+                style="display:block;font-size:.9rem;font-weight:600;color:var(--gray-700);margin-bottom:6px;">Contenido
+                del artículo</label>
+            <div class="preview-toggle">
+                <button class="active" id="btnWrite" onclick="togglePreview(false)"><i class="fas fa-edit"
+                        style="margin-right:4px;"></i> Escribir</button>
+                <button id="btnPreview" onclick="togglePreview(true)"><i class="fas fa-eye"
+                        style="margin-right:4px;"></i> Previsualizar</button>
+            </div>
+
+            <div id="writeMode">
+                <div class="editor-toolbar">
+                    <button class="toolbar-btn" title="Encabezado" onclick="insertMD('## ')"><i
+                            class="fas fa-heading"></i></button>
+                    <button class="toolbar-btn" title="Negrita" onclick="wrapMD('**')"><i
+                            class="fas fa-bold"></i></button>
+                    <button class="toolbar-btn" title="Cursiva" onclick="wrapMD('*')"><i
+                            class="fas fa-italic"></i></button>
+                    <div class="toolbar-sep"></div>
+                    <button class="toolbar-btn" title="Lista" onclick="insertMD('- ')"><i
+                            class="fas fa-list-ul"></i></button>
+                    <button class="toolbar-btn" title="Lista numerada" onclick="insertMD('1. ')"><i
+                            class="fas fa-list-ol"></i></button>
+                    <button class="toolbar-btn" title="Cita" onclick="insertMD('> ')"><i
+                            class="fas fa-quote-left"></i></button>
+                    <div class="toolbar-sep"></div>
+                    <button class="toolbar-btn" title="Insertar imagen" onclick="openImageModal()"><i
+                            class="fas fa-image"></i></button>
+                    <button class="toolbar-btn" title="Subir imagen desde archivo"
+                        onclick="document.getElementById('inlineFileInput').click()"><i
+                            class="fas fa-file-image"></i></button>
+                    <input type="file" id="inlineFileInput" accept="image/*" style="display:none"
+                        onchange="handleInlineUpload(this)">
+                    <button class="toolbar-btn" title="Insertar video YouTube" onclick="insertVideo()"><i
+                            class="fab fa-youtube"></i></button>
+                    <button class="toolbar-btn" title="Insertar enlace" onclick="insertLink()"><i
+                            class="fas fa-link"></i></button>
+                    <div class="toolbar-sep"></div>
+                    <button class="toolbar-btn" title="Línea separadora" onclick="insertMD('\n---\n')"><i
+                            class="fas fa-minus"></i></button>
+                </div>
+                <textarea class="editor-textarea" id="postContent" placeholder="Escribe tu artículo aquí...
+
+Ejemplos de formato:
+## Subtítulo
+**texto en negrita**
+*texto en cursiva*
+
+Para imágenes: usa el botón 🖼️ de arriba
+Para videos de YouTube: usa el botón ▶️ de arriba
+Para enlaces: usa el botón 🔗 de arriba"></textarea>
+            </div>
+
+            <div id="previewMode" style="display:none;">
+                <div class="preview-panel article-content" id="previewContent"></div>
+            </div>
+
+            <div class="publish-bar">
+                <button class="btn-draft" onclick="saveDraft()"><i class="fas fa-save" style="margin-right:6px;"></i>
+                    Guardar borrador</button>
+                <button class="btn-blue" onclick="publishArticle()" id="publishBtn"><i class="fas fa-paper-plane"
+                        style="margin-right:6px;"></i> Publicar artículo</button>
+            </div>
+        </div>
+
+        <!-- ARTICLES LIST -->
+        <div class="editor-section" id="tab-articles">
+            <div id="articlesList">
+                <p style="color:var(--gray-500);">Cargando artículos...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script>
+        /* ═══════════════════════════════════════════════════════
+           FIREBASE CONFIG — Configurar una sola vez
+           ═══════════════════════════════════════════════════════ */
+        const FIREBASE_CONFIG = {
+            apiKey: "FIREBASE_API_KEY",
+            authDomain: "FIREBASE_PROJECT.firebaseapp.com",
+            databaseURL: "https://FIREBASE_PROJECT-default-rtdb.firebaseio.com",
+            projectId: "FIREBASE_PROJECT",
+            storageBucket: "FIREBASE_PROJECT.appspot.com",
+            messagingSenderId: "000000000000",
+            appId: "1:000000000000:web:0000000000000000"
+        };
+
+        // Contraseña del admin (cambiar por la contraseña deseada)
+        const ADMIN_PASSWORD = "Possibilities2026!";
+
+        /* ═══════════════════════════════════════════════════════ */
+
+        let db;
+        let blogArticles = [];
+        let editingSlug = null;
+        let firebaseReady = false;
+
+        // Firebase Init
+        try {
+            if (FIREBASE_CONFIG.apiKey !== "FIREBASE_API_KEY") {
+                firebase.initializeApp(FIREBASE_CONFIG);
+                db = firebase.database();
+                firebaseReady = true;
+            }
+        } catch (e) { console.warn('Firebase not configured, using localStorage fallback.'); }
+
+        // ── Auth ──
+        function login() {
+            const pwd = document.getElementById('passwordInput').value;
+            if (pwd === ADMIN_PASSWORD) {
+                sessionStorage.setItem('blog_admin', '1');
+                showAdmin();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        }
+
+        document.getElementById('passwordInput').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+
+        function showAdmin() {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            document.getElementById('logoutBtn').style.display = 'inline';
+            loadArticles();
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', e => {
+            e.preventDefault();
+            sessionStorage.removeItem('blog_admin');
+            location.reload();
+        });
+
+        if (sessionStorage.getItem('blog_admin') === '1') showAdmin();
+
+        // ── Tabs ──
+        function switchTab(tab) {
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.editor-section').forEach(s => s.classList.remove('active'));
+            document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+            document.getElementById(`tab-${tab}`).classList.add('active');
+            if (tab === 'articles') loadArticles();
+        }
+
+        // ── Data Layer (Firebase with localStorage fallback) ──
+        async function loadArticles() {
+            try {
+                if (firebaseReady) {
+                    const snap = await db.ref('blog/articles').orderByChild('date').once('value');
+                    const data = snap.val();
+                    blogArticles = data ? Object.values(data).sort((a, b) => b.date.localeCompare(a.date)) : [];
+                } else {
+                    blogArticles = JSON.parse(localStorage.getItem('blog_articles') || '[]');
+                }
+                renderArticlesList();
+            } catch (err) {
+                showStatus('Error cargando artículos: ' + err.message, 'error');
+            }
+        }
+
+        async function saveArticle(article) {
+            if (firebaseReady) {
+                await db.ref(`blog/articles/${article.slug}`).set(article);
+            } else {
+                let articles = JSON.parse(localStorage.getItem('blog_articles') || '[]');
+                const idx = articles.findIndex(a => a.slug === article.slug);
+                if (idx !== -1) articles[idx] = article;
+                else articles.unshift(article);
+                localStorage.setItem('blog_articles', JSON.stringify(articles));
+            }
+        }
+
+        async function removeArticle(slug) {
+            if (firebaseReady) {
+                await db.ref(`blog/articles/${slug}`).remove();
+            } else {
+                let articles = JSON.parse(localStorage.getItem('blog_articles') || '[]');
+                articles = articles.filter(a => a.slug !== slug);
+                localStorage.setItem('blog_articles', JSON.stringify(articles));
+            }
+        }
+
+        function renderArticlesList() {
+            const list = document.getElementById('articlesList');
+            if (blogArticles.length === 0) {
+                list.innerHTML = '<p style="color:var(--gray-500);">No hay artículos publicados aún. ¡Crea el primero!</p>';
+                return;
+            }
+            list.innerHTML = blogArticles.map(a => `
+        <div class="article-list-item">
+          <div class="article-list-info">
+            <h4>${a.title}</h4>
+            <span><i class="fas fa-tag" style="margin-right:4px;"></i>${a.category} · ${a.date} · ${a.author}</span>
+          </div>
+          <div class="article-list-actions">
+            <a href="./article.html?slug=${a.slug}" target="_blank" class="btn-edit" style="text-decoration:none;display:inline-flex;align-items:center;"><i class="fas fa-eye" style="margin-right:4px;"></i> Ver</a>
+            <button class="btn-edit" onclick="editArticle('${a.slug}')"><i class="fas fa-edit"></i> Editar</button>
+            <button class="btn-delete" onclick="deleteArticle('${a.slug}')"><i class="fas fa-trash"></i></button>
+          </div>
+        </div>
+      `).join('');
+        }
+
+        // ── Publish ──
+        async function publishArticle() {
+            const title = document.getElementById('postTitle').value.trim();
+            const category = document.getElementById('postCategory').value.trim();
+            const author = document.getElementById('postAuthor').value.trim() || 'Porfirio Gómez';
+            const cover = document.getElementById('postCover').value.trim();
+            const excerpt = document.getElementById('postExcerpt').value.trim();
+            const content = document.getElementById('postContent').value.trim();
+
+            if (!title || !category || !content) {
+                showStatus('Completa al menos: título, categoría y contenido.', 'error'); return;
+            }
+
+            const slug = editingSlug || title.toLowerCase()
+                .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+            const btn = document.getElementById('publishBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right:6px;"></i> Publicando...';
+
+            try {
+                const article = {
+                    slug, title, excerpt, author, category,
+                    date: editingSlug
+                        ? (blogArticles.find(a => a.slug === editingSlug)?.date || new Date().toISOString().split('T')[0])
+                        : new Date().toISOString().split('T')[0],
+                    cover_image: cover,
+                    content: content
+                };
+
+                await saveArticle(article);
+                showStatus(`¡Artículo "${title}" ${editingSlug ? 'actualizado' : 'publicado'} exitosamente! 🎉`, 'success');
+                clearForm();
+                editingSlug = null;
+                await loadArticles();
+                localStorage.removeItem('blog_draft');
+
+            } catch (err) {
+                showStatus('Error al publicar: ' + err.message, 'error');
+            }
+
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right:6px;"></i> Publicar artículo';
+        }
+
+        // ── Edit ──
+        async function editArticle(slug) {
+            const article = blogArticles.find(a => a.slug === slug);
+            if (!article) return;
+            document.getElementById('postTitle').value = article.title;
+            document.getElementById('postCategory').value = article.category;
+            document.getElementById('postAuthor').value = article.author;
+            document.getElementById('postCover').value = article.cover_image || '';
+            document.getElementById('postExcerpt').value = article.excerpt || '';
+            document.getElementById('postContent').value = article.content || '';
+            editingSlug = slug;
+            switchTab('new');
+            showStatus(`Editando: "${article.title}". Haz cambios y pulsa Publicar.`, 'info');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ── Delete ──
+        async function deleteArticle(slug) {
+            const article = blogArticles.find(a => a.slug === slug);
+            if (!article || !confirm(`¿Eliminar "${article.title}"?`)) return;
+            try {
+                await removeArticle(slug);
+                await loadArticles();
+                showStatus(`Artículo "${article.title}" eliminado.`, 'success');
+            } catch (err) {
+                showStatus('Error al eliminar.', 'error');
+            }
+        }
+
+        // ── Toolbar ──
+        function insertMD(prefix) {
+            const ta = document.getElementById('postContent');
+            const s = ta.selectionStart;
+            ta.value = ta.value.substring(0, s) + prefix + ta.value.substring(s);
+            ta.focus(); ta.selectionStart = ta.selectionEnd = s + prefix.length;
+        }
+        function wrapMD(marker) {
+            const ta = document.getElementById('postContent');
+            const s = ta.selectionStart, e = ta.selectionEnd;
+            const sel = ta.value.substring(s, e) || 'texto';
+            ta.value = ta.value.substring(0, s) + marker + sel + marker + ta.value.substring(e);
+            ta.focus(); ta.selectionStart = s + marker.length; ta.selectionEnd = s + marker.length + sel.length;
+        }
+        function insertImage() {
+            const url = prompt('URL de la imagen:'); if (!url) return;
+            const cap = prompt('Descripción (opcional):') || 'Imagen';
+            insertMD(`\n![${cap}](${url} "${cap}")\n`);
+        }
+
+        // ── Image Upload & Compression ──
+        function compressImage(file, maxW = 1200, quality = 0.8) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        let w = img.width, h = img.height;
+                        if (w > maxW) { h = Math.round(h * maxW / w); w = maxW; }
+                        canvas.width = w; canvas.height = h;
+                        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+                        resolve(canvas.toDataURL('image/webp', quality));
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function handleCoverUpload(input) {
+            const file = input.files[0];
+            if (!file) return;
+            showStatus('Procesando imagen...', 'info');
+            const dataUrl = await compressImage(file, 1200, 0.8);
+            document.getElementById('postCover').value = dataUrl;
+            document.getElementById('coverPreviewImg').src = dataUrl;
+            document.getElementById('coverPreview').style.display = 'block';
+            showStatus('Imagen de portada cargada.', 'success');
+            input.value = '';
+        }
+
+        function removeCover() {
+            document.getElementById('postCover').value = '';
+            document.getElementById('coverPreview').style.display = 'none';
+        }
+
+        // Watch URL input for preview
+        document.getElementById('postCover').addEventListener('input', function () {
+            const val = this.value.trim();
+            if (val && (val.startsWith('http') || val.startsWith('data:'))) {
+                document.getElementById('coverPreviewImg').src = val;
+                document.getElementById('coverPreview').style.display = 'block';
+            } else {
+                document.getElementById('coverPreview').style.display = 'none';
+            }
+        });
+
+        async function handleInlineUpload(input) {
+            const file = input.files[0];
+            if (!file) return;
+            showStatus('Procesando imagen...', 'info');
+            const dataUrl = await compressImage(file, 1000, 0.75);
+            const cap = prompt('Descripción de la imagen (opcional):') || 'Imagen';
+            insertMD(`\n![${cap}](${dataUrl} "${cap}")\n`);
+            showStatus('Imagen insertada en el contenido.', 'success');
+            input.value = '';
+        }
+
+        function openImageModal() {
+            const choice = confirm('¿Deseas pegar una URL?\n\nPresiona OK para URL\nPresiona Cancelar para subir un archivo');
+            if (choice) {
+                insertImage();
+            } else {
+                document.getElementById('inlineFileInput').click();
+            }
+        }
+        function insertVideo() {
+            const url = prompt('Enlace del video de YouTube:'); if (!url) return;
+            insertMD(`\n[${url}](${url})\n`);
+        }
+        function insertLink() {
+            const url = prompt('URL del enlace:'); if (!url) return;
+            const text = prompt('Texto del enlace:') || 'Enlace';
+            insertMD(`[${text}](${url})`);
+        }
+
+        // ── Preview ──
+        function togglePreview(show) {
+            document.getElementById('writeMode').style.display = show ? 'none' : 'block';
+            document.getElementById('previewMode').style.display = show ? 'block' : 'none';
+            document.getElementById('btnWrite').classList.toggle('active', !show);
+            document.getElementById('btnPreview').classList.toggle('active', show);
+            if (show) document.getElementById('previewContent').innerHTML = marked.parse(document.getElementById('postContent').value);
+        }
+
+        // ── Helpers ──
+        function showStatus(msg, type) {
+            const el = document.getElementById('statusMsg');
+            el.className = `status-msg ${type}`; el.textContent = msg;
+            if (type === 'success') setTimeout(() => { el.style.display = 'none'; }, 5000);
+        }
+        function clearForm() {
+            ['postTitle', 'postCategory', 'postCover', 'postExcerpt', 'postContent'].forEach(id => document.getElementById(id).value = '');
+            document.getElementById('postAuthor').value = 'Porfirio Gómez';
+            editingSlug = null;
+        }
+        function saveDraft() {
+            localStorage.setItem('blog_draft', JSON.stringify({
+                title: document.getElementById('postTitle').value,
+                category: document.getElementById('postCategory').value,
+                author: document.getElementById('postAuthor').value,
+                cover: document.getElementById('postCover').value,
+                excerpt: document.getElementById('postExcerpt').value,
+                content: document.getElementById('postContent').value
+            }));
+            showStatus('Borrador guardado.', 'success');
+        }
+        (function () {
+            const d = JSON.parse(localStorage.getItem('blog_draft') || 'null');
+            if (d) {
+                document.getElementById('postTitle').value = d.title || '';
+                document.getElementById('postCategory').value = d.category || '';
+                document.getElementById('postAuthor').value = d.author || 'Porfirio Gómez';
+                document.getElementById('postCover').value = d.cover || '';
+                document.getElementById('postExcerpt').value = d.excerpt || '';
+                document.getElementById('postContent').value = d.content || '';
+            }
+        })();
+    </script>
+</body>
+
+</html>

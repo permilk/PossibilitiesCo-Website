@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodología CliftonStrengths | PossibilitiesCo</title>
+    <meta name="description"
+        content="Conoce la metodología CliftonStrengths de Gallup que utilizamos para transformar talentos naturales en fortalezas. 34 temas, 4 dominios, resultados comprobados.">
+    <link rel="icon" href="./assets/images/Logo_Possibilities.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <style>
+        .domains-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .domain-card {
+            padding: 32px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--gray-100);
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .domain-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .domain-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        .domain-card p {
+            color: var(--gray-600);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .domain-card .domain-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .domain-executing .domain-icon {
+            background: #7c3aed;
+        }
+
+        .domain-executing h4 {
+            color: #7c3aed;
+        }
+
+        .domain-influencing .domain-icon {
+            background: #ea580c;
+        }
+
+        .domain-influencing h4 {
+            color: #ea580c;
+        }
+
+        .domain-relationship .domain-icon {
+            background: #0891b2;
+        }
+
+        .domain-relationship h4 {
+            color: #0891b2;
+        }
+
+        .domain-strategic .domain-icon {
+            background: #16a34a;
+        }
+
+        .domain-strategic h4 {
+            color: #16a34a;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 32px 16px;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-100);
+        }
+
+        .stat-box .stat-number {
+            font-family: var(--font-display);
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--blue-700);
+            display: block;
+        }
+
+        .stat-box .stat-label {
+            font-size: 0.88rem;
+            color: var(--gray-500);
+            margin-top: 4px;
+        }
+
+        .process-timeline {
+            position: relative;
+            max-width: 700px;
+            margin: 40px auto 0;
+        }
+
+        .process-step {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            left: 27px;
+            top: 56px;
+            bottom: -40px;
+            width: 2px;
+            background: var(--blue-100);
+        }
+
+        .process-step:last-child::before {
+            display: none;
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            background: linear-gradient(135deg, var(--blue-700), var(--blue-500));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .step-content h4 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--gray-900);
+            margin-bottom: 6px;
+        }
+
+        .step-content p {
+            color: var(--gray-600);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .domains-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="./" class="navbar-logo">
+                <img src="./assets/images/Logo_Possibilities.png" alt="PossibilitiesCo">
+            </a>
+            <div class="navbar-links" id="navLinks">
+                <a href="./">Inicio</a>
+                <div class="nav-dropdown">
+                    <a href="./servicios/">Servicios</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="./servicios/individuos.html"><i class="fas fa-user-tie"></i> Coaching individual</a>
+                        <a href="./servicios/equipos.html"><i class="fas fa-users"></i> Coaching de equipos</a>
+                        <a href="./servicios/organizaciones.html"><i class="fas fa-building"></i> Consultoría organizacional</a>
+                        <a href="./servicios/masterclass.html"><i class="fas fa-graduation-cap"></i> Masterclass</a>
+                    </div>
+                </div>
+                <a href="./quienes-somos.html">¿Quiénes somos?</a>
+                <a href="./metodologia.html" style="color:var(--white);font-weight:700;">Metodología</a>
+                <a href="./blog/">Blog</a>
+                <a href="https://calendly.com/porfirio-gomez/15min" target="_blank" class="btn-nav">Agendar llamada</a>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="page-hero">
+        <span class="section-badge">Nuestra metodología</span>
+        <h1>El poder de las fortalezas</h1>
+        <p>Utilizamos el modelo CliftonStrengths® de Gallup, una de las herramientas de desarrollo más poderosas y
+            validadas científicamente en el mundo.</p>
+    </section>
+
+    <!-- ¿QUÉ ES CLIFTONSTRENGTHS? -->
+    <section class="content-section">
+        <div class="container">
+            <div class="content-grid reveal">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80"
+                    alt="CliftonStrengths Assessment" style="border-radius:var(--radius-lg);">
+                <div class="content-text">
+                    <span class="section-badge">Modelo Gallup</span>
+                    <h2>¿Qué es CliftonStrengths?</h2>
+                    <p>CliftonStrengths es una evaluación en línea que identifica tus <strong>34 talentos
+                            naturales</strong> — patrones de pensamiento, sentimiento y comportamiento que se repiten de
+                        forma natural.</p>
+                    <p>Desarrollada por el Dr. Donald O. Clifton y respaldada por <strong>más de 50 años de
+                            investigación</strong> de Gallup, esta herramienta ha sido utilizada por más de 30 millones
+                        de personas en el mundo.</p>
+                    <div class="highlight-card">
+                        <h4>Nuestra premisa</h4>
+                        <p>Cuando inviertes en desarrollar tus talentos naturales, el retorno es exponencialmente mayor
+                            que cuando intentas mejorar tus debilidades.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESTADÍSTICAS -->
+    <section class="content-section alt">
+        <div class="container">
+            <div class="methodology-header reveal">
+                <h2 class="section-title">Impacto comprobado por Gallup</h2>
+                <p class="section-subtitle" style="margin:0 auto;">Las personas y organizaciones que aplican un enfoque
+                    basado en fortalezas obtienen resultados superiores.</p>
+            </div>
+            <div class="stats-row reveal">
+                <div class="stat-box">
+                    <span class="stat-number">6x</span>
+                    <span class="stat-label">más probabilidades de estar comprometido en el trabajo</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">12.5%</span>
+                    <span class="stat-label">mayor productividad</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">3x</span>
+                    <span class="stat-label">más probabilidades de excelente calidad de vida</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">14.9%</span>
+                    <span class="stat-label">menor rotación de personal</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4 DOMINIOS -->
+    <section class="content-section">
+        <div class="container">
+            <div class="methodology-header reveal">
+                <span class="section-badge">34 Talentos</span>
+                <h2 class="section-title">Los 4 dominios de fortalezas</h2>
+                <p class="section-subtitle" style="margin:0 auto;">CliftonStrengths organiza los 34 temas de talento en
+                    cuatro dominios que describen cómo las personas contribuyen de manera única.</p>
+            </div>
+            <div class="domains-grid">
+                <div class="domain-card domain-executing reveal">
+                    <div class="domain-icon"><i class="fas fa-cogs"></i></div>
+                    <h4>Ejecución</h4>
+                    <p>Las personas fuertes en ejecución saben cómo <strong>hacer que las cosas sucedan</strong>.
+                        Convierten ideas en realidad con disciplina, enfoque y persistencia.</p>
+                </div>
+                <div class="domain-card domain-influencing reveal">
+                    <div class="domain-icon"><i class="fas fa-bullhorn"></i></div>
+                    <h4>Influencia</h4>
+                    <p>Estas personas saben cómo <strong>tomar el control y comunicar</strong>. Lideran con convicción y
+                        tienen la capacidad natural de persuadir y motivar a otros.</p>
+                </div>
+                <div class="domain-card domain-relationship reveal">
+                    <div class="domain-icon"><i class="fas fa-hands-helping"></i></div>
+                    <h4>Construcción de relaciones</h4>
+                    <p>Estos talentos te ayudan a <strong>conectar profundamente con otros</strong>. Construyen equipos
+                        fuertes, cohesivos y con un sentido profundo de pertenencia.</p>
+                </div>
+                <div class="domain-card domain-strategic reveal">
+                    <div class="domain-icon"><i class="fas fa-brain"></i></div>
+                    <h4>Pensamiento estratégico</h4>
+                    <p>Las personas estratégicas <strong>absorben y analizan información</strong> de forma natural. Ven
+                        patrones, anticipan tendencias y toman mejores decisiones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUESTRO PROCESO -->
+    <section class="content-section alt">
+        <div class="container">
+            <div class="methodology-header reveal">
+                <span class="section-badge">El proceso</span>
+                <h2 class="section-title">Cómo trabajamos contigo</h2>
+                <p class="section-subtitle" style="margin:0 auto;">Un proceso estructurado y personalizado para
+                    transformar tus talentos naturales en fortalezas dominantes.</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step reveal">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Descubre tus talentos</h4>
+                        <p>Realizas la evaluación CliftonStrengths de Gallup para identificar tus 34 temas de talento
+                            natural, ordenados del más dominante al menos presente.</p>
+                    </div>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Comprende tus resultados</h4>
+                        <p>En una sesión 1:1 con Porfirio Gómez, exploramos a profundidad el significado de tus
+                            talentos, sus combinaciones únicas y cómo se manifiestan en tu vida diaria.</p>
+                    </div>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Diseña tu plan de acción</h4>
+                        <p>Juntos definimos estrategias concretas para aplicar tus fortalezas en tu trabajo, relaciones
+                            y metas personales, con objetivos claros y medibles.</p>
+                    </div>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Transforma con acompañamiento</h4>
+                        <p>Recibe seguimiento continuo para asegurar que estás integrando tus fortalezas de manera
+                            efectiva, con sesiones de refuerzo y ajustes según tu progreso.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Descubre tus <span class="blue">34 talentos</span> hoy</h2>
+                <p>Agenda una videollamada gratuita y comienza tu viaje de autoconocimiento con CliftonStrengths.</p>
+                <div class="cta-buttons">
+                    <a href="https://calendly.com/porfirio-gomez/15min" target="_blank" class="btn-primary">
+                        <i class="fas fa-calendar-check"></i> Agendar videollamada gratuita
+                    </a>
+                    <a href="./servicios/" class="btn-secondary">
+                        Ver nuestros servicios →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="./assets/images/Logo_Possibilities.png" alt="PossibilitiesCo" class="footer-logo">
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/possibilitiesco" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/possibilitiesco" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Servicios</h4>
+                    <ul class="footer-links">
+                        <li><a href="./servicios/individuos.html">Coaching individual</a></li>
+                        <li><a href="./servicios/equipos.html">Coaching de equipos</a></li>
+                        <li><a href="./servicios/organizaciones.html">Consultoría organizacional</a></li>
+                        <li><a href="./servicios/masterclass.html">Masterclass</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="./quienes-somos.html">¿Quiénes somos?</a></li>
+                        <li><a href="./metodologia.html">Metodología</a></li>
+                        <li><a href="./blog/">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:contacto@possibilitiesco.com"><i class="fas fa-envelope"
+                                    style="margin-right:6px;"></i> contacto@possibilitiesco.com</a></li>
+                        <li><a href="https://calendly.com/porfirio-gomez/15min" target="_blank"><i
+                                    class="fas fa-calendar-check" style="margin-right:6px;"></i> Agendar
+                                videollamada</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PossibilitiesCo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./scripts/main.js"></script>
+</body>
+
+</html>

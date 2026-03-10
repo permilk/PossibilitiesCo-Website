@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PossibilitiesCo | Coaching de Fortalezas y Consultoría Organizacional</title>
+    <meta name="description"
+        content="Aceleramos el desempeño de individuos, equipos y organizaciones mediante el desarrollo de sus fortalezas con CliftonStrengths de Gallup.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PossibilitiesCo | Coaching de Fortalezas y Consultoría">
+    <meta property="og:description"
+        content="Aceleramos el desempeño de individuos, equipos y organizaciones mediante el desarrollo de sus fortalezas.">
+    <meta property="og:image" content="./assets/images/Logo_Possibilities.png">
+    <link rel="icon" href="./assets/images/Logo_Possibilities.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "PossibilitiesCo",
+    "url": "https://www.possibilitiesco.com",
+    "description": "Coaching de Fortalezas certificado por Gallup y consultoría organizacional",
+    "founder": {
+      "@type": "Person",
+      "name": "Porfirio Gómez Ojeda",
+      "jobTitle": "Coach de Fortalezas Certificado por Gallup"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+    <!-- ═══════════════ NAVBAR ═══════════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="/" class="navbar-logo">
+                <img src="./assets/images/Logo_Possibilities.png" alt="PossibilitiesCo — We Believe in People">
+            </a>
+            <div class="navbar-links" id="navLinks">
+                <a href="#inicio">Inicio</a>
+                <div class="nav-dropdown">
+                    <a href="./servicios/">Servicios</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="./servicios/individuos.html"><i class="fas fa-user-tie"></i> Coaching individual</a>
+                        <a href="./servicios/equipos.html"><i class="fas fa-users"></i> Coaching de equipos</a>
+                        <a href="./servicios/organizaciones.html"><i class="fas fa-building"></i> Consultoría
+                            organizacional</a>
+                        <a href="./servicios/masterclass.html"><i class="fas fa-graduation-cap"></i> Masterclass</a>
+                    </div>
+                </div>
+                <a href="./quienes-somos.html">¿Quiénes somos?</a>
+                <a href="./metodologia.html">Metodología</a>
+                <a href="./blog/">Blog</a>
+                <a href="https://calendly.com/porfirio-gomez/15min" target="_blank" class="btn-nav">Agendar llamada</a>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section id="inicio" class="hero">
+        <div class="hero-bg">
+            <video autoplay muted loop playsinline>
+                <source src="./assets/video-hero.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-certificate"></i>
+                    Certificado por Gallup | 14+ años de experiencia
+                </div>
+                <h1 class="hero-title">
+                    <span class="blue-light">Aceleramos</span> el desempeño de individuos, equipos y organizaciones
+                    mediante el desarrollo de sus <span class="blue-light">fortalezas</span>
+                </h1>
+                <p class="hero-description">
+                    Descubre un mundo de posibilidades desde el coaching de fortalezas.
+                    Transformamos vidas, equipos y organizaciones a través del reconocimiento
+                    y desarrollo de fortalezas naturales basadas en CliftonStrengths®.
+                </p>
+                <div class="hero-cta">
+                    <a href="https://calendly.com/porfirio-gomez/15min" target="_blank" class="btn-primary">
+                        <i class="fas fa-calendar-check"></i> Agenda tu videollamada gratuita
+                    </a>
+                    <a href="./servicios/" class="btn-secondary">
+                        Explorar servicios →
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-number" data-count="14">0+</span>
+                        <span class="hero-stat-label">Años de experiencia</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number" data-count="9">0+</span>
+                        <span class="hero-stat-label">Países alcanzados</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number" data-count="3000">0+</span>
+                        <span class="hero-stat-label">Líderes transformados</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-video-card">
+                    <video muted loop playsinline preload="metadata" poster="./assets/video-poster.jpg">
+                        <source src="./assets/video-hero.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-overlay" id="playOverlay">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ MASTERCLASS PROMO ═══════════════ -->
+    <section class="content-section" style="padding-bottom:32px;">
+        <div class="container">
+            <div class="content-grid reveal">
+                <img src="./assets/images/porfirio-presentando.png"
+                    alt="MasterClass Possibilities For You — Porfirio Gómez"
+                    style="border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);">
+                <div class="content-text">
+                    <span class="section-badge"
+                        style="background:linear-gradient(135deg,var(--blue-700),var(--blue-500));color:var(--white);">MasterClass
+                        "Possibilities For You"</span>
+                    <h2>Libera el potencial de tus talentos y vive una vida más plena y con propósito</h2>
+                    <p>Nuestra <strong>Masterclass "Possibilities For You"</strong> es un programa intensivo diseñado
+                        para que descubras, entrenes y liberes el poder de tus talentos naturales con el modelo
+                        CliftonStrengths® de Gallup.</p>
+                    <a href="./servicios/masterclass.html" class="btn-blue" style="margin-top:8px;">
+                        <i class="fas fa-graduation-cap" style="margin-right:6px;"></i> Conoce más del programa aquí →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ COACHING PROMO ═══════════════ -->
+    <section class="content-section" style="padding-top:32px;">
+        <div class="container">
+            <div class="content-grid reverse reveal">
+                <img src="./assets/images/coaching-fortalezas.png" alt="Coaching de Fortalezas"
+                    style="border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);">
+                <div class="content-text">
+                    <span class="section-badge">Coaching de Fortalezas</span>
+                    <h2>Descubre un mundo de posibilidades desde el Coaching de Fortalezas</h2>
+                    <p>Te ayudamos a dar claridad a tus metas y enfocarte en alcanzarlas a través del reconocimiento,
+                        entrenamiento y liberación del potencial de tus talentos naturales con el <strong>Modelo Clifton
+                            Strengths de Gallup</strong>.</p>
+                    <a href="./servicios/" class="btn-blue" style="margin-top:8px;">
+                        <i class="fas fa-star" style="margin-right:6px;"></i> Conoce nuestros paquetes aquí →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ SERVICES ═══════════════ -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="services-header reveal">
+                <span class="section-badge">Nuestros servicios</span>
+                <h2 class="section-title">Soluciones para cada necesidad</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-card-icon"><i class="fas fa-user-tie"></i></div>
+                    <h3>Coaching individual</h3>
+                    <p>Acompañamiento personalizado para descubrir y potenciar tus fortalezas naturales.</p>
+                    <ul>
+                        <li>Coaching de fortalezas</li>
+                        <li>Acompañamiento ejecutivo</li>
+                        <li>Masterclass "Possibilities For You"</li>
+                    </ul>
+                    <a href="./servicios/individuos.html" class="btn-blue">Conocer más →</a>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-card-icon"><i class="fas fa-users"></i></div>
+                    <h3>Coaching de equipos</h3>
+                    <p>Desarrolla equipos de alto desempeño mediante el reconocimiento de fortalezas colectivas.</p>
+                    <ul>
+                        <li>TeamBuilding</li>
+                        <li>Coaching de equipo</li>
+                        <li>Coaching de fortalezas para equipos</li>
+                    </ul>
+                    <a href="./servicios/equipos.html" class="btn-blue">Conocer más →</a>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-card-icon"><i class="fas fa-building"></i></div>
+                    <h3>Consultoría organizacional</h3>
+                    <p>Transformación estratégica y gestión del cambio para organizaciones que buscan evolucionar.</p>
+                    <ul>
+                        <li>Transformación estratégica</li>
+                        <li>Planeación estratégica</li>
+                        <li>Soluciones clima y cultura</li>
+                        <li>Gestión del cambio</li>
+                        <li>Gestión del capital humano</li>
+                        <li>Mapeo de talento</li>
+                    </ul>
+                    <a href="./servicios/organizaciones.html" class="btn-blue">Conocer más →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ ABOUT PREVIEW ═══════════════ -->
+    <section id="quienes-somos" class="about">
+        <div class="container">
+            <div class="about-grid reveal">
+                <div class="about-photo">
+                    <img src="./assets/images/porfirio-presentando.png"
+                        alt="Porfirio Gómez Ojeda — Coach certificado por Gallup">
+                </div>
+                <div class="about-info">
+                    <span class="section-badge">¿Quiénes somos?</span>
+                    <h2>Porfirio Gómez Ojeda</h2>
+                    <span class="about-role">Coach de fortalezas certificado por Gallup</span>
+                    <p>
+                        Porfirio Gómez Ojeda es Coach de Fortalezas Certificado por Gallup, es Licenciado en Ciencias de
+                        la Familia por la Universidad Anáhuac Mayab. Tiene <strong>más de 14 años de
+                            experiencia</strong>
+                        en procesos de transformación individual, de equipo y de organizaciones.
+                    </p>
+                    <p>
+                        Ha trabajado con varios Dueños, CEO's y Ejecutivos de Negocios en <strong>más de 9
+                            países</strong>, en distintas industrias.
+                    </p>
+                    <div class="content-text">
+                        <div class="highlight-card">
+                            <h4>Nuestra metodología</h4>
+                            <p>Te ayudamos a dar claridad a tus metas y enfocarte en alcanzarlas a través del
+                                reconocimiento, entrenamiento y liberación del potencial de tus talentos naturales.
+                                (Modelo Clifton Strengths)</p>
+                        </div>
+                    </div>
+                    <div class="about-highlights">
+                        <span class="about-highlight"><i class="fas fa-building"></i> PepsiCo</span>
+                        <span class="about-highlight"><i class="fas fa-building"></i> Walmart</span>
+                        <span class="about-highlight"><i class="fas fa-building"></i> AXA Seguros</span>
+                        <span class="about-highlight"><i class="fas fa-building"></i> Televisa</span>
+                        <span class="about-highlight"><i class="fas fa-globe-americas"></i> +9 Países</span>
+                        <span class="about-highlight"><i class="fas fa-users"></i> +3,000 Líderes</span>
+                    </div>
+                    <a href="./quienes-somos.html" class="btn-blue" style="margin-top:16px;">Conocer más sobre nosotros
+                        →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ METHODOLOGY ═══════════════ -->
+    <section id="metodologia" class="methodology">
+        <div class="container">
+            <div class="methodology-header reveal">
+                <span class="section-badge">Nuestra metodología</span>
+                <h2 class="section-title">El poder de las fortalezas</h2>
+                <p class="section-subtitle" style="margin:0 auto;">
+                    Utilizamos el modelo CliftonStrengths de Gallup, una de las herramientas de desarrollo más poderosas
+                    y validadas científicamente en el mundo.
+                </p>
+            </div>
+            <div class="methodology-grid">
+                <div class="method-card reveal">
+                    <div class="method-number">1</div>
+                    <h4>Descubre</h4>
+                    <p>Identifica tus 34 talentos naturales mediante la evaluación CliftonStrengths.</p>
+                </div>
+                <div class="method-card reveal">
+                    <div class="method-number">2</div>
+                    <h4>Desarrolla</h4>
+                    <p>Transforma tus talentos en fortalezas dominantes a través del coaching personalizado.</p>
+                </div>
+                <div class="method-card reveal">
+                    <div class="method-number">3</div>
+                    <h4>Aplica</h4>
+                    <p>Integra tus fortalezas en tu trabajo, relaciones y metas personales.</p>
+                </div>
+                <div class="method-card reveal">
+                    <div class="method-number">4</div>
+                    <h4>Transforma</h4>
+                    <p>Vive con mayor propósito, impacto y satisfacción en todas las áreas de tu vida.</p>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:32px;">
+                <a href="./metodologia.html" class="btn-blue"><i class="fas fa-brain"
+                        style="margin-right:6px;"></i>Conocer la metodología completa →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+    <section id="testimonios" class="testimonials">
+        <div class="container">
+            <div class="testimonials-header reveal">
+                <h2 class="section-title text-center">Lo que dicen <span class="blue">nuestros participantes</span>
+                </h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">Porfirio me ayudó muchísimo en mi proceso, a pesar de conocer el examen
+                        por contactos, la guía de mi coach me ayudó mucho a entender exactamente porque estaba viendo
+                        los resultados en la hoja, también hablamos de como aprovecharlos y poder trabajar mis áreas de
+                        oportunidad.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-info">
+                            <strong>Jose Luis Salas Calcaneo</strong>
+                            <span>Senior Account Executive</span>
+                            <span>Checkbook | San Francisco, California</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">Me pareció una herramienta super poderosa e interesante. Si hubiese
+                        hecho el test sin el acompañamiento de Porfirio, muy seguramente me hubiera enfocado únicamente
+                        en mis debilidades y cómo anularlas, pero el coach me propuso un nuevo punto de vista que me
+                        ayudó a conocerme mejor.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-info">
+                            <strong>Francella López</strong>
+                            <span>Account Supervisor</span>
+                            <span>Publicis Groupe | New York City</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ BLOG PREVIEW ═══════════════ -->
+    <section class="content-section alt" id="blog-preview">
+        <div class="container">
+            <div class="methodology-header reveal">
+                <span class="section-badge">Blog</span>
+                <h2 class="section-title">Artículos y recursos</h2>
+                <p class="section-subtitle" style="margin:0 auto;">Conocimiento práctico sobre coaching de fortalezas,
+                    liderazgo y desarrollo personal.</p>
+            </div>
+            <div class="blog-grid" id="homeBlogGrid" style="max-width:900px;margin:0 auto;">
+                <!-- Loaded dynamically by blog-home.js -->
+            </div>
+            <div style="text-align:center;margin-top:32px;">
+                <a href="./blog/" class="btn-blue"><i class="fas fa-newspaper" style="margin-right:6px;"></i> Ver todos
+                    los artículos →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ CTA ═══════════════ -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-box reveal">
+                <h2>Agenda una videollamada y descubre el mundo de <span class="blue">posibilidades</span> que tienes
+                </h2>
+                <p>Videollamada gratuita de 15 minutos para explorar cómo el coaching de fortalezas puede transformar tu
+                    vida, tu equipo o tu organización.</p>
+                <div class="cta-buttons">
+                    <a href="https://calendly.com/porfirio-gomez/15min" target="_blank" class="btn-primary">
+                        <i class="fas fa-calendar-check"></i> Videollamada para liberar tu potencial
+                    </a>
+                    <a href="./servicios/masterclass.html" class="btn-secondary">
+                        Ver masterclass →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="./assets/images/Logo_Possibilities.png" alt="PossibilitiesCo Logo" class="footer-logo">
+                    <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;margin-top:12px;">
+                        Transformando vidas y organizaciones a través del poder de las fortalezas.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/possibilitiesco" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/possibilitiesco" target="_blank"
+                            aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Servicios</h4>
+                    <ul class="footer-links">
+                        <li><a href="./servicios/individuos.html">Coaching individual</a></li>
+                        <li><a href="./servicios/equipos.html">Coaching de equipos</a></li>
+                        <li><a href="./servicios/organizaciones.html">Consultoría organizacional</a></li>
+                        <li><a href="./servicios/masterclass.html">Masterclass</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="./quienes-somos.html">¿Quiénes somos?</a></li>
+                        <li><a href="./metodologia.html">Metodología</a></li>
+                        <li><a href="./blog/">Blog</a></li>
+                        <li><a href="./aviso-privacidad.html">Aviso de privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:contacto@possibilitiesco.com"><i class="fas fa-envelope"
+                                    style="margin-right:6px;"></i> contacto@possibilitiesco.com</a></li>
+                        <li><a href="https://calendly.com/porfirio-gomez/15min" target="_blank"><i
+                                    class="fas fa-calendar-check" style="margin-right:6px;"></i> Agendar
+                                videollamada</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PossibilitiesCo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════ CHATBOT ═══════════════ -->
+    <button class="chatbot-toggle" id="chatToggle" aria-label="Abrir asistente virtual">
+        <i class="fas fa-comment-dots chat-icon"></i>
+        <i class="fas fa-times close-icon"></i>
+    </button>
+    <div class="chatbot-window" id="chatWindow">
+        <div class="chatbot-header">
+            <div class="chatbot-avatar"><i class="fas fa-robot"></i></div>
+            <div class="chatbot-header-info">
+                <h4>Asistente Possibilities</h4>
+                <p>En línea • Respuestas inmediatas</p>
+            </div>
+        </div>
+        <div class="chatbot-messages" id="chatMessages"></div>
+    </div>
+
+    <!-- ═══════════════ VIDEO MODAL ═══════════════ -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <video id="modalVideo" controls preload="none">
+                <source src="./assets/video-hero.mp4" type="video/mp4">
+            </video>
+            <button class="video-modal-close" aria-label="Cerrar video"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/chatbot.js"></script>
+    <script>
+        // Blog preview loader — shows latest 3 articles on homepage
+        (async function loadBlogPreview() {
+            const grid = document.getElementById('homeBlogGrid');
+            if (!grid) return;
+            try {
+                const res = await fetch('./blog/blog-index.json');
+                const data = await res.json();
+                const articles = (data.articles || []).slice(0, 3);
+                if (!articles.length) { grid.innerHTML = '<p style="text-align:center;color:var(--gray-500);grid-column:1/-1;">Próximamente publicaremos artículos aquí.</p>'; return; }
+                grid.innerHTML = articles.map(a => `
+                    <div class="blog-card reveal">
+                        <div class="blog-card-image"${a.cover_image ? ` style="background-image:url('./blog/${a.cover_image}')"` : ''}></div>
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">${a.category || 'General'}</span>
+                            <h3 class="blog-card-title">${a.title}</h3>
+                            <p class="blog-card-excerpt">${a.excerpt || ''}</p>
+                            <a href="./blog/article.html?slug=${a.slug}" class="blog-card-link">Leer artículo →</a>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (e) { grid.innerHTML = '<p style="text-align:center;color:var(--gray-500);grid-column:1/-1;">Próximamente publicaremos artículos aquí.</p>'; }
+        })();
+    </script>
+</body>
+
+</html>

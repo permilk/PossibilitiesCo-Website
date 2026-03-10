@@ -1,0 +1,29 @@
+[
+    {
+        "slug": "descubre-tus-fortalezas",
+        "title": "Descubre tus fortalezas naturales con CliftonStrengths",
+        "excerpt": "Aprende cómo la evaluación CliftonStrengths de Gallup puede ayudarte a identificar tus talentos naturales y transformarlos en fortalezas poderosas.",
+        "author": "Porfirio Gómez",
+        "date": "2026-03-09",
+        "category": "Coaching",
+        "cover_image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
+    },
+    {
+        "slug": "liderazgo-basado-fortalezas",
+        "title": "Liderazgo basado en fortalezas: el nuevo paradigma",
+        "excerpt": "Los mejores líderes no intentan ser buenos en todo. Descubre cómo el liderazgo basado en fortalezas está transformando organizaciones.",
+        "author": "Porfirio Gómez",
+        "date": "2026-03-01",
+        "category": "Liderazgo",
+        "cover_image": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80"
+    },
+    {
+        "slug": "equipos-alto-desempeno",
+        "title": "Cómo construir equipos de alto desempeño",
+        "excerpt": "La clave no es tener a los mejores individuos, sino lograr que las fortalezas de cada uno se complementen. Descubre las estrategias que funcionan.",
+        "author": "Porfirio Gómez",
+        "date": "2026-02-20",
+        "category": "Equipos",
+        "cover_image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+    }
+]
