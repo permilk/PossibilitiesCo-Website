@@ -1005,6 +1005,16 @@ Para enlaces: usa el botón 🔗 de arriba"></textarea>
             document.getElementById('postAuthor').value = 'Porfirio Gómez';
             const cp = document.getElementById('coverPreview');
             if (cp) { cp.innerHTML = ''; cp.style.display = 'none'; }
+            // Clear preview and switch back to Write mode
+            const pc = document.getElementById('previewContent');
+            if (pc) pc.innerHTML = '';
+            const pm = document.getElementById('previewMode');
+            if (pm) pm.style.display = 'none';
+            const em = document.getElementById('editorMode');
+            if (em) em.style.display = 'block';
+            document.querySelectorAll('.preview-toggle button').forEach((b, i) => {
+                b.classList.toggle('active', i === 0);
+            });
             editingSlug = null;
         }
         function saveDraft() {
