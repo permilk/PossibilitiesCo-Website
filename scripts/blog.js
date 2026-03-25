@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             renderer.image = function (href, title, text) {
                 if (typeof href === 'object') { text = href.text || ''; title = href.title || ''; href = href.href || ''; }
-                if (href && !href.startsWith('http') && !href.startsWith('/')) {
+                if (href && !href.startsWith('http') && !href.startsWith('/') && !href.startsWith('data:')) {
                     href = `./articles/images/${href}`;
                 }
                 const caption = text || title || '';
