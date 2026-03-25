@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'blog-card reveal visible';
             let imageUrl = article.cover_image || '';
             if (!imageUrl) imageUrl = '../assets/images/team-coaching.png';
-            else if (!imageUrl.startsWith('http')) imageUrl = `./articles/images/${imageUrl}`;
+            else if (!imageUrl.startsWith('http') && !imageUrl.startsWith('data:')) imageUrl = `./articles/images/${imageUrl}`;
             const dateStr = new Date(article.date).toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' });
             card.innerHTML = `
         <img src="${imageUrl}" alt="${article.title}" class="blog-card-image" onerror="this.src='../assets/images/team-coaching.png'">
@@ -218,7 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
                 document.title = `${article.title} | PossibilitiesCo Blog`;
                 if (coverEl && article.cover_image) {
-                    coverEl.src = article.cover_image.startsWith('http') ? article.cover_image : `./articles/images/${article.cover_image}`;
+                    let coverSrc = article.cover_image;
+                    if (!coverSrc.startsWith('http') && !coverSrc.startsWith('data:')) coverSrc = `./articles/images/${coverSrc}`;
+                    coverEl.src = coverSrc;
                     coverEl.alt = article.title;
                     coverEl.style.display = 'block';
                 }

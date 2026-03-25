@@ -647,6 +647,7 @@ Para enlaces: usa el botón 🔗 de arriba"></textarea>
                 <button class="btn-blue" onclick="publishArticle()" id="publishBtn"><i class="fas fa-paper-plane"
                         style="margin-right:6px;"></i> Publicar artículo</button>
             </div>
+            <div id="statusBar" style="display:none;position:fixed;top:80px;left:50%;transform:translateX(-50%);z-index:9999;padding:14px 28px;border-radius:10px;font-weight:600;font-size:0.95rem;box-shadow:0 4px 20px rgba(0,0,0,0.15);transition:all 0.3s ease;max-width:90%;text-align:center;"></div>
         </div>
 
         <!-- ARTICLES LIST -->
@@ -694,6 +695,23 @@ Para enlaces: usa el botón 🔗 de arriba"></textarea>
                 firebaseReady = true;
             }
         } catch (e) { console.warn('Firebase not configured, using localStorage fallback.'); }
+
+        // ── Status Notification ──
+        function showStatus(msg, type) {
+            const bar = document.getElementById('statusBar');
+            if (!bar) { alert(msg); return; }
+            bar.textContent = msg;
+            bar.style.display = 'block';
+            if (type === 'success') {
+                bar.style.background = '#059669'; bar.style.color = '#fff';
+            } else if (type === 'error') {
+                bar.style.background = '#dc2626'; bar.style.color = '#fff';
+            } else {
+                bar.style.background = '#2563eb'; bar.style.color = '#fff';
+            }
+            clearTimeout(bar._timer);
+            bar._timer = setTimeout(() => { bar.style.display = 'none'; }, 5000);
+        }
 
         // ── Auth ──
         function login() {
