@@ -15,11 +15,17 @@
     </script>
     <meta name="description"
         content="Aceleramos el desempeño de individuos, equipos y organizaciones mediante el desarrollo de sus fortalezas con CliftonStrengths de Gallup.">
+    <link rel="canonical" href="https://permilk.github.io/PossibilitiesCo-Website/">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://permilk.github.io/PossibilitiesCo-Website/">
     <meta property="og:title" content="PossibilitiesCo | Coaching de Fortalezas y Consultoría">
     <meta property="og:description"
         content="Aceleramos el desempeño de individuos, equipos y organizaciones mediante el desarrollo de sus fortalezas.">
-    <meta property="og:image" content="./assets/images/Logo_Possibilities.png">
+    <meta property="og:image" content="https://permilk.github.io/PossibilitiesCo-Website/assets/images/Logo_Possibilities.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PossibilitiesCo | Coaching de Fortalezas y Consultoría">
+    <meta name="twitter:description" content="Aceleramos el desempeño de individuos, equipos y organizaciones mediante el desarrollo de sus fortalezas.">
+    <meta name="twitter:image" content="https://permilk.github.io/PossibilitiesCo-Website/assets/images/Logo_Possibilities.png">
     <link rel="icon" href="./assets/images/Logo_Possibilities.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="./styles/main.css">
@@ -394,12 +400,18 @@
                         Transformando vidas y organizaciones a través del poder de las fortalezas.
                     </p>
                     <div class="footer-social">
-                        <a href="https://www.instagram.com/possibilitiesco" target="_blank" aria-label="Instagram">
+                        <a href="https://www.instagram.com/possibilitiesco/" target="_blank" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://www.linkedin.com/company/possibilitiesco" target="_blank"
+                        <a href="https://www.linkedin.com/company/possibilities-consulting/" target="_blank"
                             aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@possibilitiesco" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.facebook.com/PossibilitiesCo" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
                         </a>
                     </div>
                 </div>
@@ -520,6 +532,19 @@
                 `;
             }).join('');
         })();
+    </script>
+    <script>
+        // GA4 Event Tracking — Calendly clicks (conversion tracking)
+        document.addEventListener('click', function(e) {
+            const link = e.target.closest('a[href*="calendly.com"]');
+            if (link) {
+                gtag('event', 'agendar_llamada', {
+                    event_category: 'conversion',
+                    event_label: link.href,
+                    transport_type: 'beacon'
+                });
+            }
+        });
     </script>
 </body>
 
