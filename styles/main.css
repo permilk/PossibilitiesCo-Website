@@ -980,6 +980,9 @@ ul {
     font-size: 0.88rem;
     color: rgba(255, 255, 255, 0.7);
     transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .footer-links a:hover {
