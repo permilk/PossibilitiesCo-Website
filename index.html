@@ -5,6 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PossibilitiesCo | Coaching de Fortalezas y Consultoría Organizacional</title>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9VP94VBFQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Z9VP94VBFQ');
+    </script>
     <meta name="description"
         content="Aceleramos el desempeño de individuos, equipos y organizaciones mediante el desarrollo de sus fortalezas con CliftonStrengths de Gallup.">
     <meta property="og:type" content="website">
@@ -456,30 +464,57 @@
         </div>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
     <script src="./scripts/main.js"></script>
     <script src="./scripts/chatbot.js"></script>
     <script>
-        // Blog preview loader — shows latest 3 articles on homepage
+        // Blog preview loader — shows latest 3 articles on homepage (Firebase + static fallback)
         (async function loadBlogPreview() {
             const grid = document.getElementById('homeBlogGrid');
             if (!grid) return;
+            let articles = [];
             try {
+                // Try Firebase first
+                const FIREBASE_CONFIG = {
+                    apiKey: "AIzaSyCA2xHmN2s48sRFo9_SXl2PyE_SDGPgTZw",
+                    authDomain: "possibilities-d35a9.firebaseapp.com",
+                    databaseURL: "https://possibilities-d35a9-default-rtdb.firebaseio.com",
+                    projectId: "possibilities-d35a9"
+                };
+                if (!firebase.apps.length) firebase.initializeApp(FIREBASE_CONFIG);
+                const db = firebase.database();
+                const snap = await db.ref('blog/articles').orderByChild('date').once('value');
+                const data = snap.val();
+                if (data) articles = Object.values(data).sort((a, b) => b.date.localeCompare(a.date));
+            } catch (e) { /* Firebase not available */ }
+            try {
+                // Merge with static JSON
                 const res = await fetch('./blog/blog-index.json');
-                const data = await res.json();
-                const articles = (data.articles || []).slice(0, 3);
-                if (!articles.length) { grid.innerHTML = '<p style="text-align:center;color:var(--gray-500);grid-column:1/-1;">Próximamente publicaremos artículos aquí.</p>'; return; }
-                grid.innerHTML = articles.map(a => `
+                const staticArticles = await res.json();
+                const arr = Array.isArray(staticArticles) ? staticArticles : (staticArticles.articles || []);
+                const existingSlugs = new Set(articles.map(a => a.slug));
+                arr.forEach(sa => { if (!existingSlugs.has(sa.slug)) articles.push(sa); });
+            } catch (e) { /* no static JSON */ }
+            articles.sort((a, b) => b.date.localeCompare(a.date));
+            const top3 = articles.slice(0, 3);
+            if (!top3.length) { grid.innerHTML = '<p style="text-align:center;color:var(--gray-500);grid-column:1/-1;">Próximamente publicaremos artículos aquí.</p>'; return; }
+            grid.innerHTML = top3.map(a => {
+                let imgUrl = a.cover_image || '';
+                if (!imgUrl) imgUrl = './assets/images/team-coaching.png';
+                else if (!imgUrl.startsWith('http') && !imgUrl.startsWith('data:')) imgUrl = `./blog/articles/images/${imgUrl}`;
+                return `
                     <div class="blog-card reveal">
-                        <div class="blog-card-image"${a.cover_image ? ` style="background-image:url('./blog/${a.cover_image}')"` : ''}></div>
-                        <div class="blog-card-content">
+                        <img src="${imgUrl}" alt="${a.title}" class="blog-card-image" onerror="this.src='./assets/images/team-coaching.png'">
+                        <div class="blog-card-body">
                             <span class="blog-card-category">${a.category || 'General'}</span>
                             <h3 class="blog-card-title">${a.title}</h3>
                             <p class="blog-card-excerpt">${a.excerpt || ''}</p>
                             <a href="./blog/article.html?slug=${a.slug}" class="blog-card-link">Leer artículo →</a>
                         </div>
                     </div>
-                `).join('');
-            } catch (e) { grid.innerHTML = '<p style="text-align:center;color:var(--gray-500);grid-column:1/-1;">Próximamente publicaremos artículos aquí.</p>'; }
+                `;
+            }).join('');
         })();
     </script>
 </body>

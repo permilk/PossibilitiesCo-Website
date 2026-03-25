@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Firebase Config (same as admin.html) ──
     const FIREBASE_CONFIG = {
-        apiKey: "FIREBASE_API_KEY",
-        authDomain: "FIREBASE_PROJECT.firebaseapp.com",
-        databaseURL: "https://FIREBASE_PROJECT-default-rtdb.firebaseio.com",
-        projectId: "FIREBASE_PROJECT"
+        apiKey: "AIzaSyCA2xHmN2s48sRFo9_SXl2PyE_SDGPgTZw",
+        authDomain: "possibilities-d35a9.firebaseapp.com",
+        databaseURL: "https://possibilities-d35a9-default-rtdb.firebaseio.com",
+        projectId: "possibilities-d35a9"
     };
 
     let db = null;
