@@ -999,6 +999,8 @@ Para enlaces: usa el botón 🔗 de arriba"></textarea>
         function clearForm() {
             ['postTitle', 'postCategory', 'postCover', 'postExcerpt', 'postContent'].forEach(id => document.getElementById(id).value = '');
             document.getElementById('postAuthor').value = 'Porfirio Gómez';
+            const cp = document.getElementById('coverPreview');
+            if (cp) { cp.innerHTML = ''; cp.style.display = 'none'; }
             editingSlug = null;
         }
         function saveDraft() {
