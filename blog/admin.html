@@ -767,8 +767,12 @@ Para enlaces: usa el botón 🔗 de arriba"></textarea>
         }
 
         async function saveArticle(article) {
+            const timeoutMs = 30000;
             if (firebaseReady) {
-                await db.ref(`blog/articles/${article.slug}`).set(article);
+                await Promise.race([
+                    db.ref(`blog/articles/${article.slug}`).set(article),
+                    new Promise((_, reject) => setTimeout(() => reject(new Error('Tiempo de espera agotado. La imagen puede ser muy grande. Intenta con una imagen más pequeña.')), timeoutMs))
+                ]);
             } else {
                 let articles = JSON.parse(localStorage.getItem('blog_articles') || '[]');
                 const idx = articles.findIndex(a => a.slug === article.slug);
@@ -905,7 +909,7 @@ Para enlaces: usa el botón 🔗 de arriba"></textarea>
         }
 
         // ── Image Upload & Compression ──
-        function compressImage(file, maxW = 1200, quality = 0.8) {
+        function compressImage(file, maxW = 800, quality = 0.6) {
             return new Promise((resolve) => {
                 const reader = new FileReader();
                 reader.onload = (e) => {
@@ -956,7 +960,7 @@ Para enlaces: usa el botón 🔗 de arriba"></textarea>
             const file = input.files[0];
             if (!file) return;
             showStatus('Procesando imagen...', 'info');
-            const dataUrl = await compressImage(file, 1000, 0.75);
+            const dataUrl = await compressImage(file, 700, 0.5);
             const cap = prompt('Descripción de la imagen (opcional):') || 'Imagen';
             insertMD(`\n![${cap}](${dataUrl} "${cap}")\n`);
             showStatus('Imagen insertada en el contenido.', 'success');
