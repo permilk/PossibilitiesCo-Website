@@ -504,7 +504,7 @@
                 if (!imgUrl) imgUrl = './assets/images/team-coaching.png';
                 else if (!imgUrl.startsWith('http') && !imgUrl.startsWith('data:')) imgUrl = `./blog/articles/images/${imgUrl}`;
                 return `
-                    <div class="blog-card reveal">
+                    <div class="blog-card reveal visible">
                         <img src="${imgUrl}" alt="${a.title}" class="blog-card-image" onerror="this.src='./assets/images/team-coaching.png'">
                         <div class="blog-card-body">
                             <span class="blog-card-category">${a.category || 'General'}</span>
